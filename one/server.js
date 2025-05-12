@@ -5,6 +5,7 @@ const port = 3000
 
 let data = ["keu"]
 
+//Middleware to configure otu project
 app.use(express.json())
 
 app.get('/', (req, res) => {

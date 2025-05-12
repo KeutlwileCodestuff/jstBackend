@@ -185,15 +185,7 @@ p {
 
 /* Content Sectioning */
 
-main {}
 
-header {}
-
-footer {}
-
-nav {}
-
-section {}
 
 address {
     font-style: normal;
@@ -237,20 +229,17 @@ dd {
     padding-bottom: 11px;
 }
 
-dl {}
 
 dt {
     font-weight: bold;
 }
 
-figure {}
 
 figcaption {
     padding-top: 10px;
     font-size: 0.8rem;
 }
 
-hr {}
 
 
 ul,
@@ -397,14 +386,7 @@ tbody tr:nth-child(even):hover td {
     background-color: var(--background-muted);
 }
 
-/* Form elements */
-input,
-button,
-select,
-optgroup,
-textarea {
-    /* margin: 0; */
-}
+
 
 button,
 select,
