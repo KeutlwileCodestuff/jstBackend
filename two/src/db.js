@@ -5,7 +5,7 @@ const DB = new DatabaseSync(':memory:')
 
 DB.exec(`
     CREATE TABLE user(
-        id INTEGER PRIMARY KEY AUTOINCREAMENT,
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
         use_name TEXT UNIQUE,
         password TEXT
     )
@@ -13,8 +13,8 @@ DB.exec(`
 
 DB.exec(`
     CREATE TABLE todo(
-        id INTEGER PRIMARY KEY AUTOINCREAMENT,
-        use_id INTEGER,
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id INTEGER,
         task TEXT,
         completed BOOLEAN DEFAULT 0,
         FOREIGN KEY (user_id) REFERENCES user(id) 

@@ -1,6 +1,8 @@
 import express from 'express'
 import path, { dirname} from 'path'
 import { fileURLToPath } from 'url'
+import route from './routes/authRoutes.js'
+import router from './routes/todoRoutes.js'
 
 const app = express()
 const port = 3001
@@ -18,6 +20,9 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname , 'public' , 'index.html'))
   
 })
+app.use('/auth' , route)
+app.use('/todos' , router)
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
