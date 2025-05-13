@@ -6,7 +6,7 @@ import e from 'express'
                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 const route = express.Router()
 
-route.post('/login' , (req , res) =>{
+route.post('/register' , (req , res) =>{
     const {username , password} = req.body
     const hashPassword = bcrypt.hashSync(password , 8)
 
@@ -32,7 +32,7 @@ route.post('/login' , (req , res) =>{
 
 })
 
-route.post('/register' , (req , res) =>{
+route.post('/login' , (req , res) =>{
     
 })
 
