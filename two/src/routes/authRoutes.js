@@ -30,14 +30,12 @@ route.post('/register' , (req , res) =>{
     }
 })
 
-
 route.post('/login' , (req , res) =>{
     // One eay encrypt the password the user entered using the same algorithem and then
     // search for a password that may match the entered one within the database to authanticate the 
     // user
 
     const {username , password} = req.body
-    const hashPassword = bcrypt.hashSync(password , 8)
 
     try{
         const getUser = DB.prepare('SELECT * FROM user WHERE user_name = ? ')
@@ -45,14 +43,15 @@ route.post('/login' , (req , res) =>{
 
         if(!ifUser){
             return res.status(404).send({message: 'User not found'})
+        }
+
+        const comparePasswords = bcrypt.compareSync(password ,ifUser.password )
+        console.log(comparePasswords)
+        if(comparePasswords){
+            const token = jwt.sign({id: ifUser.id},process.env.JWT_SECRET, {expiresIn: '48'})
+            return res.json({token})
         }else{
-            const comparePasswords = bcrypt.compare(ifUser.password , hashPassword)
-            if(!comparePasswords){
-                return res.status(401).send({message: 'Invalid password'})
-            }else{
-                const token = jwt.sign({id: ifUser.id},process.env.JWT_SECRET, {expiresIn: '48'})
-                res.json(token)
-            }
+            return res.status(401).send({message: 'Invalid password'})
         }
 
     }catch(err){
