@@ -14,7 +14,7 @@ route.post('/register' , (req , res) =>{
 
     try{
         const insertUserData = DB.prepare('INSERT INTO user (user_name , password) VALUES (?, ?)')
-        const creatUser = insertUserData.run(username , password)
+        const creatUser = insertUserData.run(username , hashPassword)
         // insert data into the todo table in the database
         const defaultTodo = 'add your first todo'
         const insertTodo = DB.prepare('INSERT INTO todo (user_id , task) VALUES (?, ?)')
@@ -28,12 +28,38 @@ route.post('/register' , (req , res) =>{
         console.error(err)
         res.send(501)
     }
-
-
 })
 
+
 route.post('/login' , (req , res) =>{
-    
+    // One eay encrypt the password the user entered using the same algorithem and then
+    // search for a password that may match the entered one within the database to authanticate the 
+    // user
+
+    const {username , password} = req.body
+    const hashPassword = bcrypt.hashSync(password , 8)
+
+    try{
+        const getUser = DB.prepare('SELECT * FROM user WHERE user_name = ? ')
+        const ifUser = getUser.get(username)
+
+        if(!ifUser){
+            return res.status(404).send({message: 'User not found'})
+        }else{
+            const comparePasswords = bcrypt.compare(ifUser.password , hashPassword)
+            if(!comparePasswords){
+                return res.status(401).send({message: 'Invalid password'})
+            }else{
+                const token = jwt.sign({id: ifUser.id},process.env.JWT_SECRET, {expiresIn: '48'})
+                res.json(token)
+            }
+        }
+
+    }catch(err){
+        console.error(err)
+        res.send(501)
+    }
+
 })
 
 export default route
