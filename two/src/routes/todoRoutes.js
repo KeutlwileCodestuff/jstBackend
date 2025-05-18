@@ -34,10 +34,12 @@ router.put('/:id' , (req , res) => {
 
 })
 
-// router.delete('/' , (req , res) => {
-    
-// })
-// Create a new todo
+router.delete('/:id' , (req , res) => {
+    const {id} = req.params
+    const deleteTodo = DB.prepare('DELETE FROM todo WHERE id = ? AND user_id = ?')
+    deleteTodo.run(id , req.userId)
 
-// update a todo
+    res.json({message: 'Deleted Todo'})
+})
+
 export default router

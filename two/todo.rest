@@ -23,15 +23,14 @@ Content-Type: application/json
 ### GET todos
 
 GET http://localhost:3004/todos
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NTk3MzM3LCJleHAiOjE3NDc2ODM3Mzd9.S_TUvDt-XGUs1B1GWJz6hbjUVS5MgQ6jnCc_AtfmcTs
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NTk4MjQyLCJleHAiOjE3NDc2ODQ2NDJ9.BWgI4wvJxQUMc11C-p-L0dEuVGzm-Ybr3m9GyeQJDqo
 ### POST todos
 POST http://localhost:3004/todos
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NTk3MzM3LCJleHAiOjE3NDc2ODM3Mzd9.S_TUvDt-XGUs1B1GWJz6hbjUVS5MgQ6jnCc_AtfmcTs
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NTk4MjQyLCJleHAiOjE3NDc2ODQ2NDJ9.BWgI4wvJxQUMc11C-p-L0dEuVGzm-Ybr3m9GyeQJDqo
 
 {
-    "task": "cook 4"
+    "task": "code again"
 }
 
 
@@ -39,8 +38,14 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NTk3
 
 PUT http://localhost:3004/todos/3
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NTk3MzM3LCJleHAiOjE3NDc2ODM3Mzd9.S_TUvDt-XGUs1B1GWJz6hbjUVS5MgQ6jnCc_AtfmcTs
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NTk4MjQyLCJleHAiOjE3NDc2ODQ2NDJ9.BWgI4wvJxQUMc11C-p-L0dEuVGzm-Ybr3m9GyeQJDqo
 
 {
     "completed":1
 }
+
+### DELETE todo
+
+DELETE http://localhost:3004/todos/3
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NTk4MjQyLCJleHAiOjE3NDc2ODQ2NDJ9.BWgI4wvJxQUMc11C-p-L0dEuVGzm-Ybr3m9GyeQJDqo
+
