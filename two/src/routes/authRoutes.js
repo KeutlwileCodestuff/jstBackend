@@ -21,7 +21,6 @@ route.post('/register' , (req , res) =>{
         const defaultTodo = 'add your first todo.'
         const insertTodo = DB.prepare('INSERT INTO todo (user_id , task) VALUES (?, ?)')
 
-        console.log(`user id when registering: ${creatUser.lastInsertRowid}`)
         insertTodo.run(creatUser.lastInsertRowid , defaultTodo)        
 
         // create a token for the user 

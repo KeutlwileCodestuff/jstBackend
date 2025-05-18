@@ -11,9 +11,16 @@ router.get('/' , (req , res) => {
     res.json(todos)
 })
 
-// router.post('/' , (req , res) => {
+//add a todo to the db and displays on the browser.
+router.post('/' , (req , res) => {
+
+    const {task} = req.body
+    const insertTask = DB.prepare('INSERT INTO todo (user_id , task) VALUES (?, ?)')
+    insertTask.run(req.userId , task)
+
+    res.json({id: insertTask.lastID ,  task , completed: 0})
     
-// })
+})
 
 // router.put('/' , (req , res) => {
     

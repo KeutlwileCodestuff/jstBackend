@@ -6,7 +6,7 @@ import router from './routes/todoRoutes.js'
 import authMiddleware from './middleware/authMiddleware.js'
 
 const app = express()
-const port = 3001
+const port = 3004
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename )
 
