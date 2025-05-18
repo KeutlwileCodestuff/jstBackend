@@ -1,6 +1,6 @@
 GET http://localhost:3001/
 
-###
+### register
 POST http://localhost:3004/auth/register
 Content-Type: application/json
 
@@ -10,7 +10,7 @@ Content-Type: application/json
 }
 
 
-###
+### login
 POST http://localhost:3004/auth/login
 Content-Type: application/json
 
@@ -23,14 +23,28 @@ Content-Type: application/json
 ### GET todos
 
 GET http://localhost:3004/todos
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NTkzNzA1LCJleHAiOjE3NDc2ODAxMDV9.lqeTYnI-9q8naTilmI4IqgZr7aUI_rIDE-yzO4A38h4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NTk2MTI4LCJleHAiOjE3NDc2ODI1Mjh9.-NMnxe1D6syEhhpOUpOFIs9vKzeRRXQIhR1vs0rp7aw
+
+
 ### POST todos
 POST http://localhost:3004/todos
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NTkzNzA1LCJleHAiOjE3NDc2ODAxMDV9.lqeTYnI-9q8naTilmI4IqgZr7aUI_rIDE-yzO4A38h4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NTk2MTI4LCJleHAiOjE3NDc2ODI1Mjh9.-NMnxe1D6syEhhpOUpOFIs9vKzeRRXQIhR1vs0rp7aw
+
 
 {
     "task": "cook"
 }
 
 
+### PUT todos
+
+PUT http://localhost:3004/todos
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NTk2MTI4LCJleHAiOjE3NDc2ODI1Mjh9.-NMnxe1D6syEhhpOUpOFIs9vKzeRRXQIhR1vs0rp7aw
+
+
+{
+    "task": "code",
+    "completed":1
+}

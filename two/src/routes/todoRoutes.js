@@ -22,9 +22,20 @@ router.post('/' , (req , res) => {
     
 })
 
-// router.put('/' , (req , res) => {
+//update 
+router.put('/' , (req , res) => {
+    const {task , completed} = req.body
+    const updateTask = DB.prepare('UPDATE todo SET completed = 1 WHERE task = ? AND user_id = ?')
+    updateTask.run(task , req.userId)
+
+    //getting id of the updated task
+    const getInfo = DB.prepare('SELECT * FROM todo WHERE user_id = ? AND task = ? ')
+    getInfo.all(req.userId , task )
+
+    res.json({id: getInfo.id ,  task , completed: 1})
+
     
-// })
+})
 
 // router.delete('/' , (req , res) => {
     
