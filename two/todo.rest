@@ -23,28 +23,24 @@ Content-Type: application/json
 ### GET todos
 
 GET http://localhost:3004/todos
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NTk2MTI4LCJleHAiOjE3NDc2ODI1Mjh9.-NMnxe1D6syEhhpOUpOFIs9vKzeRRXQIhR1vs0rp7aw
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NTk3MzM3LCJleHAiOjE3NDc2ODM3Mzd9.S_TUvDt-XGUs1B1GWJz6hbjUVS5MgQ6jnCc_AtfmcTs
 
 ### POST todos
 POST http://localhost:3004/todos
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NTk2MTI4LCJleHAiOjE3NDc2ODI1Mjh9.-NMnxe1D6syEhhpOUpOFIs9vKzeRRXQIhR1vs0rp7aw
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NTk3MzM3LCJleHAiOjE3NDc2ODM3Mzd9.S_TUvDt-XGUs1B1GWJz6hbjUVS5MgQ6jnCc_AtfmcTs
 
 {
-    "task": "cook"
+    "task": "cook 4"
 }
 
 
 ### PUT todos
 
-PUT http://localhost:3004/todos
+PUT http://localhost:3004/todos/3
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NTk2MTI4LCJleHAiOjE3NDc2ODI1Mjh9.-NMnxe1D6syEhhpOUpOFIs9vKzeRRXQIhR1vs0rp7aw
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NTk3MzM3LCJleHAiOjE3NDc2ODM3Mzd9.S_TUvDt-XGUs1B1GWJz6hbjUVS5MgQ6jnCc_AtfmcTs
 
 {
-    "task": "code",
     "completed":1
 }
