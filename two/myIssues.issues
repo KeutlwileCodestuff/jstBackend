@@ -1,0 +1,2 @@
+1. app loads todos before user registers or login
+2. get todo endpoint is not returning todos

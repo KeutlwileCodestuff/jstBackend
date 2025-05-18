@@ -16,8 +16,12 @@ Content-Type: application/json
 
 {
     "username":"email@gmail.com",
-    "password":"13456"
+    "password":"123456"
 }
 
+
+### GET todos
+
+GET http://localhost:3001/todos
 
 

@@ -3,6 +3,7 @@ import path, { dirname} from 'path'
 import { fileURLToPath } from 'url'
 import route from './routes/authRoutes.js'
 import router from './routes/todoRoutes.js'
+import authMiddleware from './middleware/authMiddleware.js'
 
 const app = express()
 const port = 3001
@@ -20,8 +21,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname , 'public' , 'index.html'))
   
 })
+
+
 app.use('/auth' , route)
-app.use('/todos' , router)
+app.use('/todos',authMiddleware , router)
 
 
 app.listen(port, () => {

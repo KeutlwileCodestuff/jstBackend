@@ -205,6 +205,7 @@
                     body: JSON.stringify({ username: emailVal, password: passVal })
                 })
                 data = await response.json()
+                
             } else {
                 // login an account
                 const response = await fetch(apiBase + 'auth/login', {
@@ -250,7 +251,8 @@
     // CRUD LOGIC
 
     async function fetchTodos() {
-        isLoading = true
+        isLoading = true 
+        if(token){console.log('token was sent to the backend')}
         const response = await fetch(apiBase + 'todos', {
             headers: { 'Authorization': token }
         })
