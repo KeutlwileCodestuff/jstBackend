@@ -1,0 +1,51 @@
+GET http://localhost:3001/
+
+### register
+POST http://localhost:3004/auth/register
+Content-Type: application/json
+
+{
+    "username":"email@gmail.com",
+    "password":"123456"
+}
+
+
+### login
+POST http://localhost:3004/auth/login
+Content-Type: application/json
+
+{
+    "username":"email@gmail.com",
+    "password":"123456"
+}
+
+
+### GET todos
+
+GET http://localhost:3004/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NTk4MjQyLCJleHAiOjE3NDc2ODQ2NDJ9.BWgI4wvJxQUMc11C-p-L0dEuVGzm-Ybr3m9GyeQJDqo
+### POST todos
+POST http://localhost:3004/todos
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NTk4MjQyLCJleHAiOjE3NDc2ODQ2NDJ9.BWgI4wvJxQUMc11C-p-L0dEuVGzm-Ybr3m9GyeQJDqo
+
+{
+    "task": "code again"
+}
+
+
+### PUT todos
+
+PUT http://localhost:3004/todos/3
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NTk4MjQyLCJleHAiOjE3NDc2ODQ2NDJ9.BWgI4wvJxQUMc11C-p-L0dEuVGzm-Ybr3m9GyeQJDqo
+
+{
+    "completed":1
+}
+
+### DELETE todo
+
+DELETE http://localhost:3004/todos/3
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NTk4MjQyLCJleHAiOjE3NDc2ODQ2NDJ9.BWgI4wvJxQUMc11C-p-L0dEuVGzm-Ybr3m9GyeQJDqo
+
