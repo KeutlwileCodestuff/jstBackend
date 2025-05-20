@@ -1,44 +1,60 @@
 import express from 'express'
 import DB from '../db.js'
+import prisma from '../prismaClient.js'
 
 const router = express.Router()
 
 // get all todos for logged user
-router.get('/' , (req , res) => {
-    console.log('in get todo route')
-    const getTodos = DB.prepare('SELECT * FROM todo WHERE user_id = ? ')
-    const todos = getTodos.all(req.userId )
-    res.json(todos)
+router.get('/' , async (req , res) => {
+    const getTodos = await prisma.todo.findMany({
+        where: {
+            user_id: req.userId
+        }
+    })
+    res.json(getTodos)
 })
 
 //add a todo to the db and displays on the browser.
-router.post('/' , (req , res) => {
+router.post('/' , async (req , res) => {
 
     const {task} = req.body
-    const insertTask = DB.prepare('INSERT INTO todo (user_id , task) VALUES (?, ?)')
-    insertTask.run(req.userId , task)
+    const insertTask = await prisma.todo.create({
+        data: {
+            user_id: req.userId , 
+            task   : task
+        }
+    })
 
-    res.json({id: insertTask.lastID ,  task , completed: 0})
+    res.json(insertTask)
     
 })
 
 //update 
-router.put('/:id' , (req , res) => {
+router.put('/:id' , async (req , res) => {
 
     const {id} = req.params
-    const {task , completed} = req.body
-    const updateTask = DB.prepare('UPDATE todo SET completed = 1 WHERE id = ? AND user_id = ?')
-    updateTask.run(id , req.userId)
+    await prisma.todo.update({
+        where: {
+            id     : parseInt(id),
+            user_id:userId
+        },
+        data:{
+            completed: !!1
+        }
+    })
 
     res.json({message: 'Todo Completed !'})
 
 })
 
-router.delete('/:id' , (req , res) => {
+router.delete('/:id' , async (req , res) => {
     const {id} = req.params
-    const deleteTodo = DB.prepare('DELETE FROM todo WHERE id = ? AND user_id = ?')
-    deleteTodo.run(id , req.userId)
-
+    await prisma.todo.deleteMany({
+        where:{
+            id     : parseInt(id),
+            user_id: req.userId
+        }
+    })
     res.json({message: 'Deleted Todo'})
 })
 

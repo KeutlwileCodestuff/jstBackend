@@ -26,7 +26,7 @@ route.post('/register' , async (req , res) =>{
         })
 
         
-        insertTodo = await prisma.todo.create({
+        await prisma.todo.create({
             data: {
                 user_id: insertUserData.id , 
                 task   : 'add your first todo.'
@@ -43,7 +43,7 @@ route.post('/register' , async (req , res) =>{
     }
 })
 
-route.post('/login' , (req , res) =>{
+route.post('/login' , async (req , res) =>{
     console.log('in login route')
 
     // One eay encrypt the password the user entered using the same algorithem and then
@@ -53,8 +53,11 @@ route.post('/login' , (req , res) =>{
     const {username , password} = req.body
 
     try{
-        const getUser = DB.prepare('SELECT * FROM user WHERE user_name = ? ')
-        const ifUser = getUser.get(username)
+        const getUser = await prisma.user.findUnique({
+            where: {
+                username : username
+            }
+        })
 
         if(!ifUser){
             return res.status(404).send({message: 'User not found'})
