@@ -3,10 +3,11 @@ import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import DB from '../db.js'
 import e from 'express'
+import prisma from '../prismaClient.js'
                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 const route = express.Router()
 
-route.post('/register' , (req , res) =>{
+route.post('/register' , async (req , res) =>{
     console.log('in register route')
 
     const {username , password} = req.body
@@ -15,16 +16,25 @@ route.post('/register' , (req , res) =>{
     // save username and hashed password to the database
 
     try{
-        const insertUserData = DB.prepare('INSERT INTO user (user_name , password) VALUES (?, ?)')
-        const creatUser = insertUserData.run(username , hashPassword)
-        // insert data into the todo table in the database
-        const defaultTodo = 'add your first todo.'
-        const insertTodo = DB.prepare('INSERT INTO todo (user_id , task) VALUES (?, ?)')
 
-        insertTodo.run(creatUser.lastInsertRowid , defaultTodo)        
+        // insert data into the todo table in the database
+        const insertUserData = await prisma.user.create({
+            data: {
+                username : username,
+                password : hashPassword
+            }
+        })
+
+        
+        insertTodo = await prisma.todo.create({
+            data: {
+                user_id: insertUserData.id , 
+                task   : 'add your first todo.'
+            }
+        })       
 
         // create a token for the user 
-        const token = jwt.sign({id: creatUser.lastInsertRowid},process.env.JWT_SECRET, {expiresIn: '24h'})
+        const token = jwt.sign({id: insertUserData.id },process.env.JWT_SECRET, {expiresIn: '24h'})
         res.json({token})
 
     }catch(err){

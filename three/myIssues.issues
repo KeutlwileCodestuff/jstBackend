@@ -1,4 +1,0 @@
-1. app loads todos before user registers or login
-=> i just had to refreash the browser a couple of time i guess
-2. get todo endpoint is not returning todos
-=> the solution on problem one applies to this one.
