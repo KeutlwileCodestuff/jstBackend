@@ -27,4 +27,5 @@ model Todo{
   user_id    Int 
   completed  Boolean @default(false)
   task       String 
-}
+  user       User    @relation(fields: [user_id] , references: [id])  
+} 
